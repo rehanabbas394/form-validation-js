@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+        body {
+            background-color: rgba(64, 64, 211, 0.815);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+
+        #form-container {
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0px 0px 10px 0px;
+        }
+
+        input {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0px;
+
+        }
+
+        input[type='submit'] {
+            width: 220px;
+            background-color: blueviolet;
+            border: 0px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .error {
+            color: red;
+            text-align: left;
+            margin: 0px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form-container">
+        <h1>Login</h1>
+        <form action="" onsubmit="return validationform()">
+            <input type="text" placeholder="user name" id="username"><br>
+            <p class="error" id="uerror"></p>
+            <input type="password" placeholder="password" id="password"><br>
+            <p class="error" id="passerror"></p>
+            <input type="submit">
+        </form>
+    </div>
+    <script>
+        let username = document.querySelector("#username")
+        let password = document.querySelector("#password")
+        let uerror = document.querySelector("#uerror")
+        let passerror = document.querySelector("#passerror")
+        let num = 1;
+
+        function validationform() {
+            if (username.value == "") {
+                uerror.innerHTML = "Username is empty";
+                num = 0;
+
+            }
+            else if (username.value.length < 3) {
+                uerror.innerHTML = "Username should be 3 character";
+                num = 0;
+            }
+            else {
+                uerror.innerHTML = "";
+                num = 1;
+            }
+            if (password.value == "") {
+                passerror.innerHTML = "Password is empty";
+                num = 0;
+            }
+            else if (password.value.length < 6) {
+                passerror.innerHTML = "password must be 6 character";
+                num = 0;
+            }
+            else {
+                passerror.innerHTML = "";
+                num = 1;
+            }
+            if (num) {
+                return true
+
+            } else {
+                return false
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
